@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { CabecalhoComponent } from './components/cabecalho/cabecalho.component';
 import { RodapeComponent } from './components/rodape/rodape.component';
 import { CartaoComponent } from './components/cartao/cartao.component';
+import { HomeComponent } from './paginas/home/home.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CabecalhoComponent,RodapeComponent, CartaoComponent],
+  imports: [RouterOutlet, CabecalhoComponent, RodapeComponent, HomeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
