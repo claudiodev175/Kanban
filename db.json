@@ -270,6 +270,64 @@
         "status": "Análise Priorização",
         "assigned_to": "João Silva"
       }
-    ]
-  }
+    ],
+
+    "usuarios":[
+          { "id": 1, "nome": "João Silva", "email": "joao.silva@example.com" },
+          { "id": 2, "nome": "Maria Oliveira", "email": "maria.oliveira@example.com" },
+          { "id": 3, "nome": "Carlos Mendes", "email": "carlos.mendes@example.com" },
+          { "id": 4, "nome": "Ana Costa", "email": "ana.costa@example.com" },
+          { "id": 5, "nome": "Pedro Souza", "email": "pedro.souza@example.com" },
+          { "id": 6, "nome": "Clara Lima", "email": "clara.lima@example.com" },
+          { "id": 7, "nome": "Lucas Alves", "email": "lucas.alves@example.com" },
+          { "id": 8, "nome": "Beatriz Rocha", "email": "beatriz.rocha@example.com" },
+          { "id": 9, "nome": "Ricardo Martins", "email": "ricardo.martins@example.com" },
+          { "id": 10, "nome": "Amanda Ribeiro", "email": "amanda.ribeiro@example.com" },
+          { "id": 11, "nome": "Felipe Cardoso", "email": "felipe.cardoso@example.com" },
+          { "id": 12, "nome": "Juliana Ferreira", "email": "juliana.ferreira@example.com" },
+          { "id": 13, "nome": "Gustavo Santos", "email": "gustavo.santos@example.com" },
+          { "id": 14, "nome": "Paula Neves", "email": "paula.neves@example.com" },
+          { "id": 15, "nome": "Fernando Lima", "email": "fernando.lima@example.com" },
+          { "id": 16, "nome": "Daniel Carvalho", "email": "daniel.carvalho@example.com" },
+          { "id": 17, "nome": "Renata Souza", "email": "renata.souza@example.com" },
+          { "id": 18, "nome": "Thiago Pereira", "email": "thiago.pereira@example.com" },
+          { "id": 19, "nome": "Mariana Oliveira", "email": "mariana.oliveira@example.com" },
+          { "id": 20, "nome": "André Costa", "email": "andre.costa@example.com" },
+          { "id": 21, "nome": "Vanessa Lima", "email": "vanessa.lima@example.com" },
+          { "id": 22, "nome": "Diego Ramos", "email": "diego.ramos@example.com" },
+          { "id": 23, "nome": "Laura Campos", "email": "laura.campos@example.com" },
+          { "id": 24, "nome": "Gabriel Nogueira", "email": "gabriel.nogueira@example.com" },
+          { "id": 25, "nome": "Patrícia Dias", "email": "patricia.dias@example.com" },
+          { "id": 26, "nome": "Eduardo Silva", "email": "eduardo.silva@example.com" },
+          { "id": 27, "nome": "Sofia Batista", "email": "sofia.batista@example.com" },
+          { "id": 28, "nome": "Henrique Torres", "email": "henrique.torres@example.com" },
+          { "id": 29, "nome": "Camila Almeida", "email": "camila.almeida@example.com" },
+          { "id": 30, "nome": "Rafael Teixeira", "email": "rafael.teixeira@example.com" }
+        ],
+
+        "tiposTarefa":
+        [
+          { "id": 1, "nome": "bug" },
+          { "id": 2, "nome": "feature" },
+          { "id": 3, "nome": "documentation" },
+          { "id": 4, "nome": "optimization" },
+          { "id": 5, "nome": "evolucoes" },
+          { "id": 6, "nome": "correcoes" },
+          { "id": 7, "nome": "desenvolvimento" },
+          { "id": 8, "nome": "atendimento" }
+        ],
+
+        "statuses":
+        [
+          { "id": 1, "nome": "Em Execução" },
+          { "id": 2, "nome": "Pronta para Homologação" },
+          { "id": 3, "nome": "Registrada" },
+          { "id": 4, "nome": "Aguardando Versão" },
+          { "id": 5, "nome": "Análise Viabilidade" },
+          { "id": 6, "nome": "Reaberta" },
+          { "id": 7, "nome": "Análise Priorização" }
+        ]
+        
+      }
+  
   

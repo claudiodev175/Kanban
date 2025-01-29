@@ -1,9 +1,13 @@
-footer{
-    background-color:  rgb(0, 15, 110);
-    padding-left: 0px;
-    padding-right: 0px;
+footer {
+  background-color: rgb(0, 15, 110);
+  width: 100%; /* Garante que o footer ocupe toda a largura da tela */
+  padding: 0; /* Remove padding extra */
+  margin: 0; /* Remove margens extras */
+  box-sizing: border-box; /* Garante que padding e bordas sejam contabilizados na largura */
 }
 
-.texto-rodape{
+.texto-rodape {
   align-items: end;
+  color: white; /* Mantém a cor do texto branca */
+  margin-left: 10px; /* Adiciona espaçamento ao texto se necessário */
 }

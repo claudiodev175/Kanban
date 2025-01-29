@@ -1,0 +1,46 @@
+<app-cabecalho [exibirFiltro]="false"
+    [exibirBotaoNovaTarefa]="false"></app-cabecalho>
+<div class="container">
+    <h2 class="text-primary">Nova Tarefa</h2>
+    <div class="row justify-content-center">
+        <div class="mb-3 col-6">
+            <label for="titulo" class="form-label">Titulo</label>
+            <input type="email" class="form-control" id="titulo"
+                placeholder="name@example.com" [(ngModel)]="novaTarefa.title">
+        </div>
+        <div class="mb-3 col-6">
+            <label for="autor" class="form-label">Autor</label>
+            <select class="form-select" aria-label="Default select example">
+                <option *ngFor="let usuario of usuarios" value="usuario.nome" [(ngModel)]="novaTarefa.author">{{usuario.nome}}</option>
+            </select>
+        </div>
+        <div class="mb-3 col-6">
+            <label for="dataCriacao" class="form-label">Data de Criação</label>
+            <input type="date" class="form-control" id="dataCriacao" [(ngModel)] = "novaTarefa.created_on">
+        </div>
+        <div class="mb-3 col-6">
+            <label for="tipoTarefa" class="form-label">Selecione o tipo de
+                tarefa</label>
+            <select class="form-select" aria-label="Default select example">
+                <option *ngFor="let tipoTarefa of tipoTarefas" value="tipoTarefa.nome" [(ngModel)]="novaTarefa.type">{{tipoTarefa.nome}}</option>
+            </select>
+        </div>
+        <div class="mb-3 col-6">
+            <label for="statusTarefa" class="form-label">Selecione o status da
+                tarefa</label>
+            <select class="form-select" aria-label="Default select example">
+                <option *ngFor="let status of statuses" value="status.nome" [(ngModel)]="novaTarefa.status">{{ status.nome }}</option>
+            </select>
+        </div>
+        <div class="mb-3 col-6">
+            <label for="responsavel" class="form-label">Responsavel</label>
+            <select class="form-select" aria-label="Default select example">
+                <option *ngFor="let usuario of usuarios" value="usuario.nome" [(ngModel)]="novaTarefa.assigned_to">{{usuario.nome}}</option>
+            </select>
+        </div>
+        <div class="text-end">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </div>
+</div>
+<app-rodape></app-rodape>
