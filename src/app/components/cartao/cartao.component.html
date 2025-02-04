@@ -7,6 +7,11 @@
     <p class="mb-1"><small><strong>Data de Criação:</strong>{{ dataCriacao }}</small></p>
     <p class="mb-1"><small><strong>Criado por:</strong> {{autor}} </small></p>
     <p class="mb-1"><small><strong>Atribuído para:</strong> {{responsavel}} </small></p>
-    <a href="#" class="btn btn-primary mt-3">Saber mais</a>
+    <div class="d-flex justify-content-between">
+        <button class="btn btn-primary mt-3 me-2" (click)="editarTarefa()">Editar</button>
+        <button class="btn btn-danger mt-3" (click)="executarAcaoExclusao()">Excluir</button>
+    </div>
 </div>
 </div>
+
+

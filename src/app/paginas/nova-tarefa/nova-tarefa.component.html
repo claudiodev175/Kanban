@@ -1,7 +1,8 @@
 <app-cabecalho [exibirFiltro]="false"
     [exibirBotaoNovaTarefa]="false"></app-cabecalho>
 <div class="container">
-    <h2 class="text-primary">Nova Tarefa</h2>
+    <h2 class="text-primary mb-3" *ngIf="!edicao">Nova Tarefa</h2>
+    <h2 class="text-primary mb-3" *ngIf="edicao">Editar Tarefa</h2>
     <div class="row justify-content-center">
         <div class="mb-3 col-6">
             <label for="titulo" class="form-label">Titulo</label>
@@ -10,8 +11,8 @@
         </div>
         <div class="mb-3 col-6">
             <label for="autor" class="form-label">Autor</label>
-            <select class="form-select" aria-label="Default select example">
-                <option *ngFor="let usuario of usuarios" value="usuario.nome" [(ngModel)]="novaTarefa.author">{{usuario.nome}}</option>
+            <select class="form-select" aria-label="Default select example"  [(ngModel)]="novaTarefa.author">
+                <option *ngFor="let usuario of usuarios" [value]="usuario.nome">{{usuario.nome}}</option>
             </select>
         </div>
         <div class="mb-3 col-6">
@@ -21,26 +22,37 @@
         <div class="mb-3 col-6">
             <label for="tipoTarefa" class="form-label">Selecione o tipo de
                 tarefa</label>
-            <select class="form-select" aria-label="Default select example">
-                <option *ngFor="let tipoTarefa of tipoTarefas" value="tipoTarefa.nome" [(ngModel)]="novaTarefa.type">{{tipoTarefa.nome}}</option>
+            <select class="form-select" aria-label="Default select example" [(ngModel)]="novaTarefa.type">
+                <option *ngFor="let tipoTarefa of tipoTarefas" value="tipoTarefa.nome" >{{tipoTarefa.nome}}</option>
             </select>
         </div>
         <div class="mb-3 col-6">
             <label for="statusTarefa" class="form-label">Selecione o status da
                 tarefa</label>
-            <select class="form-select" aria-label="Default select example">
-                <option *ngFor="let status of statuses" value="status.nome" [(ngModel)]="novaTarefa.status">{{ status.nome }}</option>
+            <select class="form-select" aria-label="Default select example" [(ngModel)]="novaTarefa.status">
+                <option *ngFor="let status of statuses" value="status.nome" >{{ status.nome }}</option>
             </select>
         </div>
         <div class="mb-3 col-6">
             <label for="responsavel" class="form-label">Responsavel</label>
-            <select class="form-select" aria-label="Default select example">
-                <option *ngFor="let usuario of usuarios" value="usuario.nome" [(ngModel)]="novaTarefa.assigned_to">{{usuario.nome}}</option>
+            <select class="form-select" aria-label="Default select example" [(ngModel)]="novaTarefa.assigned_to">
+                <option *ngFor="let usuario of usuarios" value="usuario.nome" >{{usuario.nome}}</option>
             </select>
         </div>
         <div class="text-end">
-            <button type="submit" class="btn btn-primary">Salvar</button>
+            <button type="submit" (click)="salvarTarefa()" class="btn btn-primary">Salvar</button>
         </div>
     </div>
 </div>
+
+<app-modal 
+*ngIf="exibirModal"
+[titulo]="'Confirmação'"
+[subtitulo]="'Tarefa cadastrada com sucesso'"
+[textoBotao1]="'Cadastrar nova tarefa'"
+[textoBotao2]="'Ver Tarefas'"
+[acao1]="redirecionarParaNovaTarefa"
+[acao2]="redirecionarParaHome">
+
+> </app-modal>
 <app-rodape></app-rodape>

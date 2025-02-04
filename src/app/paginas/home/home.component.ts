@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CartaoComponent } from '../../components/cartao/cartao.component';
 import { CabecalhoComponent } from "../../components/cabecalho/cabecalho.component";
 import { RodapeComponent } from "../../components/rodape/rodape.component";
 import { TarefasService } from '../../servicos/tarefas.service';
 import { CommonModule } from '@angular/common';
 import { Tarefa } from '../../interfaces/tarefa';
+import { ModalComponent } from "../../components/modal/modal.component";
 
 
 @Component({
   selector: 'app-home',
-  imports: [CartaoComponent, CabecalhoComponent, RodapeComponent, CommonModule],
+  imports: [CartaoComponent, CabecalhoComponent, RodapeComponent, CommonModule, ModalComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -26,6 +27,9 @@ export class HomeComponent {
     'Reaberta'
   ]
 
+  @Input()exibirModal = false;
+  idTarefaASerExcluida: number = 0;
+
   constructor(private tarefasService: TarefasService) { }
 
   ngOnInit(): void {
@@ -40,9 +44,31 @@ export class HomeComponent {
       (this.tipoSelecionado === 'Todos' || this.tipoSelecionado === tarefa.type)
     });
   }
-
+ 
   atualizarTipoSelecionado(novoTipo: string): void {
     this.tipoSelecionado = novoTipo;
   }
+
+  selecionarTarefaASerExcluida(id: number): void{
+    this.idTarefaASerExcluida = id;
+    this.confirmarExclusao();
+  }
+
+
+  confirmarExclusao(): void{
+    this.exibirModal = true;
+  }
+
+  cancelarExclusao(): void{
+    this.exibirModal = false;
+  }
+
+  executarExclusao(): void{
+    this.tarefasService.excluirTarefa(this.idTarefaASerExcluida).subscribe((resposta) => {
+    alert('Tarefa excluída com sucesso!')
+    window.location.reload();
+  })
+  }
+
 
 }

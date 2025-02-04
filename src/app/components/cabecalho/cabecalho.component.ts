@@ -27,4 +27,8 @@ export class CabecalhoComponent {
   atualizarTipoSelecionado(tipo: string): void {
     this.selecaoTipo.emit(tipo);
   }
+
+  redirecionarParaNovaTarefa(): void {
+    this.router.navigate(['novaTarefa']);
+  }
 }

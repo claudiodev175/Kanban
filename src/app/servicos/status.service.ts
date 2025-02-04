@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class StatusService {
-private readonly  API_URL = 'http://localhost:5000/statuses'
+private readonly  API_URL = "http://localhost:5000/statuses"
 
   constructor(private httpClient: HttpClient) { }
 

@@ -19,4 +19,9 @@ export const routes: Routes = [
         title: 'Kanban | Nova Tarefa',
         component: NovaTarefaComponent
     },
+    {
+        path: 'editarTarefa/:id',
+        title: 'Kanban | Editar Tarefa',
+        component: NovaTarefaComponent
+    }
 ];

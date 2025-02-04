@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ModalComponent } from "../modal/modal.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cartao',
@@ -15,6 +17,22 @@ export class CartaoComponent {
   @Input() autor: string = "";
   @Input() tipo: string = "";
   @Input() responsavel: string = "";
+  @Output() selecaoTarefaId = new EventEmitter<number>();
+
+  constructor(private router: Router) { }
+  executarAcaoExclusao(): void{
+    this.selecaoTarefaId.emit(this.id);
+  }
+
+  excluirTarefaId(id: number): void {
+    this.selecaoTarefaId.emit(id);
+  }
+
+  editarTarefa(): void {
+    this.router.navigate(['editarTarefa', this.id]);
+  }
+   
+  }
 
 
-}
+
