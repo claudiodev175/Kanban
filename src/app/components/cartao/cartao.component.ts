@@ -20,6 +20,7 @@ export class CartaoComponent {
   @Output() selecaoTarefaId = new EventEmitter<number>();
 
   constructor(private router: Router) { }
+  
   executarAcaoExclusao(): void{
     this.selecaoTarefaId.emit(this.id);
   }

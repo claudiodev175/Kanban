@@ -13,10 +13,11 @@ import { faPlus, faSignOut } from '@fortawesome/free-solid-svg-icons';
 export class CabecalhoComponent {
   faPlus = faPlus;
   faSignOut = faSignOut;
-  router: Router = new Router;
   @Input() exibirFiltro = true;
   @Input() exibirBotaoNovaTarefa = true;
   @Output() selecaoTipo = new EventEmitter<string>();
+
+  constructor(private router:Router){}
 
   logOut(): void {
     localStorage.removeItem('usuario_kanban')

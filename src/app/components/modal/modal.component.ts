@@ -15,7 +15,7 @@ export class ModalComponent {
   @Input() textoBotao2: string = "";
   @Input() acao1: any;
   @Input() acao2: any;
-  @Output() cancelatAcaoExclusao = new EventEmitter<boolean>();
+  
 
 
   constructor(private router: Router, private tarefasService: TarefasService) { }
@@ -31,8 +31,11 @@ export class ModalComponent {
     }
   }
 
-  cancelarAcaoExclusao(): void {
-    this.cancelatAcaoExclusao.emit(false);
+  executarExclusao(id: number): void {
+    this.tarefasService.excluirTarefa(id).subscribe((resposta) => {
+      alert("Tarefa excluída com sucesso!");
+      // window.location.reload();
+    })
   }
 
 }

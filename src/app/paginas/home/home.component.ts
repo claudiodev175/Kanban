@@ -49,9 +49,10 @@ export class HomeComponent {
     this.tipoSelecionado = novoTipo;
   }
 
+
   selecionarTarefaASerExcluida(id: number): void{
     this.idTarefaASerExcluida = id;
-    this.confirmarExclusao();
+  
   }
 
 
@@ -63,12 +64,17 @@ export class HomeComponent {
     this.exibirModal = false;
   }
 
-  executarExclusao(): void{
+  executarExclusao(): void {
+    if (!this.idTarefaASerExcluida) {
+      alert("Erro: ID da tarefa não definido!");
+      return;
+    }
     this.tarefasService.excluirTarefa(this.idTarefaASerExcluida).subscribe((resposta) => {
-    alert('Tarefa excluída com sucesso!')
-    window.location.reload();
-  })
+      alert("Tarefa excluída com sucesso!");
+      this.exibirModal = false;
+      window.location.reload();
+    }, (erro) => {
+      alert("Erro ao excluir tarefa: " + erro);
+    })
   }
-
-
 }

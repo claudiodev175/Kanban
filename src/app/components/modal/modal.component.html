@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    <div class="modal modal-overlay d-block p-4 py-md-5" tabindex="-1" role="dialog" id="modalChoice">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content rounded-3 shadow">
-            <div class="modal-body p-4 text-center">
-              <h5 class="mb-0">{{titulo}}</h5>
-              <p class="mb-0">{{subtitulo}}</p>
-            </div>
-            <div class="modal-footer flex-nowrap p-0">
-              <button type="button" (click)="aoClicarBotao1()" 
+  </head>
+  <body>
+    <div class="modal modal-overlay d-block p-4 py-md-5" tabindex="-1"
+      role="dialog" id="modalChoice">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-3 shadow">
+          <div class="modal-body p-4 text-center">
+            <h5 class="mb-0">{{titulo}}</h5>
+            <p class="mb-0">{{subtitulo}}</p>
+          </div>
+          <div class="modal-footer flex-nowrap p-0">
+            <button type="button" (click)="aoClicarBotao1()"
               class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end">
               <strong>{{textoBotao1}}</strong>
             </button>
-              <button type="button"  (click)="aoClicarBotao2()"
-              class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">{{textoBotao2}}</button>
-            </div>
+            <button type="button" (click)="aoClicarBotao2()"
+              class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0"
+              data-bs-dismiss="modal">{{textoBotao2}}</button>
           </div>
         </div>
       </div>
-</body>
+    </div>
+  </body>
 </html>

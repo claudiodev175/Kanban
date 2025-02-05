@@ -27,15 +27,8 @@
             </div>
         </div>
     </div>
-    <app-modal 
-    *ngIf="exibirModal"
-    [titulo]="'Confirmação de exclusão'"
-    [subtitulo]="'Tem certeza que deseja excluir esta tarefa?'"
-    [textoBotao1]="'Sim, prosseguir.'"
-    [acao1]="executarExclusao()"
-    [textoBotao2]="'Nao, cancelar.'"
-    [acao2]="cancelarExclusao">
-        
-    </app-modal>
+    <app-modal *ngIf="exibirModal" [titulo]="'Confirmação de Exclusão'"
+    [subtitulo]="'Tem certeza que deseja excluir esta tarefa?'" [textoBotao1]="'Sim, prosseguir.'"
+    [acao1]="executarExclusao" [textoBotao2]="'Não, cancelar.'" [acao2]="cancelarExclusao()"></app-modal>
     
     <app-rodape></app-rodape>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router'; // Import necessário para navegação programática
 import { FormsModule } from '@angular/forms'; // Importa FormsModule
+import { AutenticacaoService } from '../../servicos/autenticacao.service';
 
 @Component({
   imports: [
@@ -10,7 +11,6 @@ import { FormsModule } from '@angular/forms'; // Importa FormsModule
   styleUrls: ['./login.component.css'] // Deve ser "styleUrls" (plural)
 })
 export class LoginComponent {
-  router: Router = new Router;
 
   usuario = {
     email: "",
@@ -18,16 +18,25 @@ export class LoginComponent {
     manterConectado: false
   }
 
+  erro: string = "";
+
+  constructor(
+    private autenticacaoService: AutenticacaoService,
+    private router: Router
+  ) { }
+
   fazerLogin(): void {
-    console.log(this.usuario)
-   
+    this.autenticacaoService.fazerLogin(this.usuario.email, this.usuario.senha).subscribe(resposta => {
+      if (this.usuario.manterConectado) {
+        localStorage.setItem('usuario_kanban', JSON.stringify(resposta));
+      }
+      sessionStorage.setItem('usuario_kanban', JSON.stringify(resposta));
 
-    if (this.usuario.manterConectado) {
-      localStorage.setItem('usuario_kanban', JSON.stringify(this.usuario))
-    }
+      this.router.navigate(['home']);
+    }, erro => {
+      this.erro = erro.message;
+    })
 
-    sessionStorage.setItem('usuario_kanban', JSON.stringify(this.usuario))
-    this.router.navigate(['/home']); 
   }
 
   
