@@ -9,7 +9,7 @@ import { StatusService } from '../../servicos/status.service';
 import { TipoTarefa } from '../../interfaces/tipoTarefa';
 import { TiposTarefaService } from '../../servicos/tipos-tarefa.service';
 import { Tarefa } from '../../interfaces/tarefa';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TarefasService } from '../../servicos/tarefas.service';
 import { ModalComponent } from "../../components/modal/modal.component";
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,11 +17,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-nova-tarefa',
-  imports: [CabecalhoComponent, RodapeComponent, CommonModule, FormsModule, ModalComponent],
+  imports: [CabecalhoComponent, RodapeComponent, CommonModule, FormsModule, ModalComponent,ReactiveFormsModule],
   templateUrl: './nova-tarefa.component.html',
   styleUrl: './nova-tarefa.component.css'
 })
 export class NovaTarefaComponent {
+  novaTarefaForm: FormGroup
   usuarios: Usuario[] = [];
   statuses: Status[] = [];
   tipoTarefas: TipoTarefa[] = [];
@@ -39,14 +40,21 @@ export class NovaTarefaComponent {
 
   edicao: boolean = false;
 
-  constructor(private usuarioservice: UsuariosService, 
-    private statusservice: StatusService, 
+  constructor(private usuarioservice: UsuariosService,
+    private statusservice: StatusService,
     private tipotarefaservice: TiposTarefaService,
     private tarefaservice: TarefasService,
     private router: Router,
-    private route: ActivatedRoute
-  ) 
-    {}
+    private route: ActivatedRoute,
+    private fb: FormBuilder
+  ) {
+    this.novaTarefaForm = this.fb.group({
+      titulo: ['', [Validators.required, Validators.minLength(5)]],
+      autor: ['',[Validators.required,]],
+      tipoTarefa:['',[Validators.required]],
+      manterConectado: true
+    })
+  }
 
   ngOnInit(): void {
     this.usuarioservice.listarUsuarios().subscribe((usuarios) => {
@@ -70,33 +78,37 @@ export class NovaTarefaComponent {
     })
   }
 
-  salvarTarefa(): void{
+  salvarTarefa(): void {
+    if (this.novaTarefaForm.invalid) {
+      alert("Preencha os campos obrigatórios");
+      return;
+    }
     if (this.novaTarefa.id !== 0) {
       this.tarefaservice.atualizarTarefa(this.novaTarefa.id, this.novaTarefa).subscribe(resposta => {
         alert("Tarefa atualizada com sucesso!");
         this.router.navigate(['home']);
       })
-    }else{
-    this.tarefaservice.cadastrarTarefa(this.novaTarefa).subscribe({
-      next: (resposta) => {
-       this.exibirModal = true;
-      },
-      error: (erro) => {
-        alert('Erro ao cadastrar a tarefa:'+ erro)
-      }
-    });
-  }
+    } else {
+      this.tarefaservice.cadastrarTarefa(this.novaTarefa).subscribe({
+        next: (resposta) => {
+          this.exibirModal = true;
+        },
+        error: (erro) => {
+          alert('Erro ao cadastrar a tarefa:' + erro)
+        }
+      });
+    }
   }
 
   redirecionarParaHome(): void {
-    this.router.navigate(['/home']);  
+    this.router.navigate(['/home']);
   }
 
   redirecionarParaNovaTarefa(): void {
     window.location.reload();
-    this.router.navigate(['/novaTarefa']);  
+    this.router.navigate(['/novaTarefa']);
   }
-  
+
   carregarDadosTarefa(id: number): void {
     this.tarefaservice.obterTarefa(id).subscribe((resposta) => {
       this.novaTarefa = resposta;

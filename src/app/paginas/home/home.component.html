@@ -11,14 +11,13 @@
                 <p class="h4 mt-2 mb-4">{{status}}</p>
                 <div class="row g-3">
                     <app-cartao
-                        *ngFor="let tarefa of obterTarefaPorStatus(status)"
-                        [id]="tarefa.id"
-                        [titulo]="tarefa.title"
-                        [dataCriacao]="tarefa.created_on"
-                        [autor]="tarefa.author"
-                        [tipo]="tarefa.type"
-                        [responsavel]="tarefa.assigned_to"
-                        (selecaoTarefaId)="selecionarTarefaASerExcluida($event)"
+                    *ngFor="let tarefa of obterTarefaPorStatus(status)" 
+                    [id]="tarefa.id"
+                    [titulo]="tarefa.title" 
+                    [dataCriacao]="tarefa.created_on" 
+                    [autor]="tarefa.author"
+                    [tipo]="tarefa.type" 
+                    [responsavel]="tarefa.assigned_to"
 
                         >
                     
@@ -27,8 +26,5 @@
             </div>
         </div>
     </div>
-    <app-modal *ngIf="exibirModal" [titulo]="'Confirmação de Exclusão'"
-    [subtitulo]="'Tem certeza que deseja excluir esta tarefa?'" [textoBotao1]="'Sim, prosseguir.'"
-    [acao1]="executarExclusao" [textoBotao2]="'Não, cancelar.'" [acao2]="cancelarExclusao()"></app-modal>
     
-    <app-rodape></app-rodape>
+<app-rodape></app-rodape>

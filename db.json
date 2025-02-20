@@ -86,7 +86,7 @@
       "title": "Corrigir erro no cálculo de impostos",
       "created_on": "2025-01-07",
       "author": "Felipe Cardoso",
-      "type": "correcoes",
+      "type": "feature",
       "status": "Análise Priorização",
       "assigned_to": "Juliana Ferreira"
     },
@@ -179,15 +179,6 @@
       "type": "desenvolvimento",
       "status": "Registrada",
       "assigned_to": "Laura Campos"
-    },
-    {
-      "id": "23",
-      "title": "Atualizar dependências do projeto",
-      "created_on": "2025-01-17",
-      "author": "Laura Campos",
-      "type": "atendimento",
-      "status": "Análise Viabilidade",
-      "assigned_to": "Gabriel Nogueira"
     },
     {
       "id": "24",
@@ -375,6 +366,24 @@
       "created_on": "",
       "author": "",
       "type": "",
+      "status": "",
+      "assigned_to": ""
+    },
+    {
+      "id": 0,
+      "title": "Atualizar documentação da API",
+      "created_on": "",
+      "author": "Maria Oliveira",
+      "type": "bug",
+      "status": "",
+      "assigned_to": ""
+    },
+    {
+      "id": 0,
+      "title": "Atualizar documentação da API",
+      "created_on": "",
+      "author": "Carlos Mendes",
+      "type": "bug",
       "status": "",
       "assigned_to": ""
     }

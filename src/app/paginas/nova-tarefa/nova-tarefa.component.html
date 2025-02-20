@@ -1,19 +1,32 @@
 <app-cabecalho [exibirFiltro]="false"
     [exibirBotaoNovaTarefa]="false"></app-cabecalho>
-<div class="container">
+
+<form [formGroup]="novaTarefaForm" (ngSubmit)="salvarTarefa()" class="container">
     <h2 class="text-primary mb-3" *ngIf="!edicao">Nova Tarefa</h2>
     <h2 class="text-primary mb-3" *ngIf="edicao">Editar Tarefa</h2>
     <div class="row justify-content-center">
         <div class="mb-3 col-6">
             <label for="titulo" class="form-label">Titulo</label>
             <input type="email" class="form-control" id="titulo"
-                placeholder="name@example.com" [(ngModel)]="novaTarefa.title">
+                placeholder="name@example.com" [(ngModel)]="novaTarefa.title"  formControlName="titulo">
+                <div class="text-danger my-2">
+                <small *ngIf="novaTarefaForm.controls['titulo'].errors?.['required']">O
+                    Campo Titulo é obrigatório</small>
+                  <small *ngIf="novaTarefaForm.controls['titulo'].errors?.['minLength']">o titulo da Tarefa 
+                    deverá ter no minímo 5 caracteres
+                  </small>
+                </div>
         </div>
         <div class="mb-3 col-6">
             <label for="autor" class="form-label">Autor</label>
-            <select class="form-select" aria-label="Default select example"  [(ngModel)]="novaTarefa.author">
+            <select class="form-select" aria-label="Default select example"  [(ngModel)]="novaTarefa.author" formControlName="autor">
                 <option *ngFor="let usuario of usuarios" [value]="usuario.nome">{{usuario.nome}}</option>
             </select>
+
+            <div class="text-danger my-2">
+                <small *ngIf="novaTarefaForm.controls['autor'].errors?.['required']">O
+                    Campo Autor é obrigatório</small>
+            </div>
         </div>
         <div class="mb-3 col-6">
             <label for="dataCriacao" class="form-label">Data de Criação</label>
@@ -22,9 +35,20 @@
         <div class="mb-3 col-6">
             <label for="tipoTarefa" class="form-label">Selecione o tipo de
                 tarefa</label>
-            <select class="form-select" aria-label="Default select example" [(ngModel)]="novaTarefa.type">
-                <option *ngFor="let tipoTarefa of tipoTarefas" value="tipoTarefa.nome" >{{tipoTarefa.nome}}</option>
+                <select 
+                class="form-select" 
+                aria-label="Default select example" 
+                [(ngModel)]="novaTarefa.type"
+                formControlName="tipoTarefa"
+            >
+                <option *ngFor="let tipoTarefa of tipoTarefas" [value]="tipoTarefa.nome">{{ tipoTarefa.nome }}
+                </option>
             </select>
+            <div class="text-danger my-2">
+                <small *ngIf="novaTarefaForm.controls['tipoTarefa'].errors?.['required']">
+                    O campo tipo da tarefa é obrigatório.
+                </small>
+            </div>
         </div>
         <div class="mb-3 col-6">
             <label for="statusTarefa" class="form-label">Selecione o status da
@@ -40,19 +64,12 @@
             </select>
         </div>
         <div class="text-end">
-            <button type="submit" (click)="salvarTarefa()" class="btn btn-primary">Salvar</button>
+            <button [disabled]="novaTarefaForm.invalid"  class="btn btn-primary">Salvar</button>
         </div>
     </div>
-</div>
+</form>
 
-<app-modal 
-*ngIf="exibirModal"
-[titulo]="'Confirmação'"
-[subtitulo]="'Tarefa cadastrada com sucesso'"
-[textoBotao1]="'Cadastrar nova tarefa'"
-[textoBotao2]="'Ver Tarefas'"
-[acao1]="redirecionarParaNovaTarefa"
-[acao2]="redirecionarParaHome">
-
-> </app-modal>
+<app-modal *ngIf="exibirModal" [titulo]="'Confirmação'" [subtitulo]="'Tarefa cadastrada com sucesso!'"
+    [textoBotao1]="'Cadastrar Nova Tarefa'" [acao1]="redirecionarParaNovaTarefa" [textoBotao2]="'Ver Tarefas'"
+    [acao2]="redirecionarParaHome"></app-modal>
 <app-rodape></app-rodape>
